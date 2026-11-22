@@ -6,6 +6,8 @@ const continueCareerButton = document.getElementById("continueCareer");
 
 let toastTimeout;
 
+// NOTIFICATIONS
+
 function showToast(message) {
     toast.textContent = message;
     toast.classList.add("show");
@@ -17,7 +19,7 @@ function showToast(message) {
     }, 2600);
 }
 
-// CAREER SYSTEM
+// CAREER DATA
 
 function getCareer() {
     try {
@@ -27,28 +29,145 @@ function getCareer() {
     }
 }
 
-function startCareer() {
-    const existingCareer = getCareer();
+const clubs = [
+    "FC Barcelona",
+    "Real Madrid",
+    "Manchester City",
+    "Arsenal",
+    "Liverpool",
+    "Bayern Munich",
+    "Borussia Dortmund",
+    "Inter Milan",
+    "Paris Saint-Germain"
+];
 
-    if (existingCareer) {
-        const overwrite = confirm(
-            "Du hast bereits eine Karriere. Möchtest du eine neue starten?"
-        );
+// CAREER CREATION SCREEN
 
-        if (!overwrite) return;
+function openCareerCreation() {
+    let screen = document.getElementById("careerScreen");
+
+    if (!screen) {
+        screen = document.createElement("div");
+        screen.id = "careerScreen";
+        screen.className = "career-screen";
+
+        screen.innerHTML = `
+            <div class="career-panel">
+                <button class="career-back" id="careerBack">
+                    ← BACK TO MENU
+                </button>
+
+                <div class="career-heading">
+                    <span class="section-kicker">YOUR STORY STARTS NOW</span>
+                    <h2>CREATE YOUR <span>LEGACY.</span></h2>
+                    <p>Build your manager profile and choose your first challenge.</p>
+                </div>
+
+                <form id="careerForm">
+
+                    <div class="career-field">
+                        <label for="managerName">MANAGER NAME</label>
+                        <input
+                            id="managerName"
+                            type="text"
+                            placeholder="Enter your name"
+                            maxlength="24"
+                            required
+                        >
+                    </div>
+
+                    <div class="career-field">
+                        <label for="managerNationality">NATIONALITY</label>
+                        <input
+                            id="managerNationality"
+                            type="text"
+                            placeholder="e.g. German"
+                            maxlength="30"
+                            value="German"
+                            required
+                        >
+                    </div>
+
+                    <div class="career-field">
+                        <label for="clubSelect">CHOOSE YOUR CLUB</label>
+                        <select id="clubSelect">
+                            ${clubs.map(club =>
+                                `<option value="${club}">${club}</option>`
+                            ).join("")}
+                        </select>
+                    </div>
+
+                    <div class="career-field">
+                        <label for="difficultySelect">DIFFICULTY</label>
+                        <select id="difficultySelect">
+                            <option value="Beginner">Beginner</option>
+                            <option value="Professional" selected>Professional</option>
+                            <option value="World Class">World Class</option>
+                            <option value="Legendary">Legendary</option>
+                        </select>
+                    </div>
+
+                    <div class="career-season">
+                        <span>STARTING SEASON</span>
+                        <strong>2026 / 27</strong>
+                    </div>
+
+                    <button class="primary-button career-submit" type="submit">
+                        <span>START YOUR CAREER</span>
+                        <span class="button-arrow">↗</span>
+                    </button>
+
+                </form>
+            </div>
+        `;
+
+        document.body.appendChild(screen);
+
+        document.getElementById("careerBack").addEventListener("click", () => {
+            screen.classList.remove("visible");
+        });
+
+        document.getElementById("careerForm").addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const existingCareer = getCareer();
+
+            if (existingCareer) {
+                const overwrite = confirm(
+                    "You already have a career. Do you want to replace it?"
+                );
+
+                if (!overwrite) return;
+            }
+
+            const career = {
+                manager: document.getElementById("managerName").value.trim(),
+                nationality: document.getElementById("managerNationality").value.trim(),
+                club: document.getElementById("clubSelect").value,
+                difficulty: document.getElementById("difficultySelect").value,
+                season: "2026/27",
+                created: new Date().toISOString()
+            };
+
+            if (!career.manager || !career.nationality) {
+                showToast("PLEASE COMPLETE ALL FIELDS");
+                return;
+            }
+
+            localStorage.setItem("zunoCareer", JSON.stringify(career));
+
+            screen.classList.remove("visible");
+
+            showToast(`CAREER CREATED · ${career.club.toUpperCase()} ⚽`);
+
+            continueCareerButton.style.opacity = "1";
+        });
     }
 
-    const career = {
-        club: "FC Barcelona",
-        season: 2026,
-        manager: "Manager",
-        created: new Date().toISOString()
-    };
-
-    localStorage.setItem("zunoCareer", JSON.stringify(career));
-
-    showToast("YOUR BARCELONA CAREER HAS BEGUN! ⚽");
+    screen.classList.add("visible");
 }
+
+// CONTINUE CAREER
 
 function continueCareer() {
     const career = getCareer();
@@ -58,15 +177,12 @@ function continueCareer() {
         return;
     }
 
-    showToast(
-        `WELCOME BACK! ${career.club} · SEASON ${career.season}`
-    );
+    showToast(`WELCOME BACK, ${career.manager.toUpperCase()}!`);
 }
 
 // BUTTONS
 
-newCareerButton.addEventListener("click", startCareer);
-
+newCareerButton.addEventListener("click", openCareerCreation);
 continueCareerButton.addEventListener("click", continueCareer);
 
 // CLUB DETAILS
@@ -77,6 +193,7 @@ document.getElementById("clubDetails").addEventListener("click", () => {
 
 document.getElementById("clubNav").addEventListener("click", (event) => {
     event.preventDefault();
+
     document.querySelector(".club-section").scrollIntoView({
         behavior: "smooth"
     });
@@ -108,15 +225,10 @@ document.getElementById("settingsCard").addEventListener("click", openSettings);
 function initialize() {
     const career = getCareer();
 
-    if (career) {
-        continueCareerButton.style.opacity = "1";
-    } else {
-        continueCareerButton.style.opacity = "0.65";
-    }
+    continueCareerButton.style.opacity = career ? "1" : "0.65";
 
     console.log("ZUNO FC initialized.");
-    console.log("Active club: FC Barcelona");
-    console.log("Prototype version: 0.1");
+    console.log("Prototype version: 0.2");
 }
 
 initialize();
