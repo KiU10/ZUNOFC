@@ -22,7 +22,7 @@
         </a>
 
         <nav class="top-nav">
-            <a class="active" href="#">HOME</a>
+            <a href="#" id="homeNav" class="active">HOME</a>
             <a href="#" id="clubNav">MY CLUB</a>
             <a href="#" id="settingsNav">SETTINGS</a>
         </nav>
@@ -34,6 +34,9 @@
     </header>
 
     <main>
+
+    <!-- HOME / START SCREEN -->
+    <section id="homePage" class="page active-page">
         <section class="hero">
             <div class="hero-content">
                 <div class="eyebrow">
@@ -77,7 +80,53 @@
                 <div class="visual-caption">MÉS QUE UN CLUB.</div>
             </div>
         </section>
+    </section>
 
+
+    <!-- DASHBOARD -->
+    <section id="dashboardPage" class="page">
+        <div class="dashboard-heading">
+            <span class="section-kicker">CAREER MODE · 2026/27</span>
+            <h1>WELCOME BACK,<br><span id="dashboardManager">MANAGER.</span></h1>
+            <p>Your journey. Your decisions. Your legacy.</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-card dashboard-feature">
+                <span class="section-kicker">YOUR CLUB</span>
+                <h2 id="dashboardClub">FC Barcelona</h2>
+                <p id="dashboardDifficulty">Professional difficulty</p>
+                <button class="primary-button" id="dashboardClubButton">
+                    <span>VIEW MY CLUB</span>
+                    <span class="button-arrow">↗</span>
+                </button>
+            </div>
+
+            <div class="dashboard-card">
+                <span class="section-kicker">NEXT MATCH</span>
+                <h2>COMING SOON</h2>
+                <p>Your next challenge awaits.</p>
+            </div>
+
+            <div class="dashboard-card">
+                <span class="section-kicker">SQUAD MANAGEMENT</span>
+                <h2>SQUAD</h2>
+                <p>Manage your players and tactics.</p>
+                <button class="dashboard-link" id="dashboardSquad">OPEN SQUAD ↗</button>
+            </div>
+
+            <div class="dashboard-card">
+                <span class="section-kicker">TRANSFER MARKET</span>
+                <h2>TRANSFERS</h2>
+                <p>Find the next star for your team.</p>
+                <button class="dashboard-link" id="dashboardTransfers">OPEN TRANSFERS ↗</button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- MY CLUB -->
+    <section id="clubPage" class="page">
         <section class="club-section">
             <div class="section-heading">
                 <div>
@@ -96,7 +145,7 @@
                     >
                     <div>
                         <span class="club-country">SPAIN · LA LIGA</span>
-                        <h3>FC Barcelona</h3>
+                        <h3 id="clubName">FC Barcelona</h3>
                         <p>Barcelona, Catalonia</p>
                     </div>
                 </div>
@@ -111,6 +160,17 @@
                         <strong>Spotify Camp Nou</strong>
                     </div>
                     <div class="stat">
+                        <span>STATUS</span>
+                        <strong class="status-ready">READY TO PLAY</strong>
+                    </div>
+                </div>
+
+                <button class="club-arrow" id="clubDetails" aria-label="Vereinsdetails öffnen">↗</button>
+            </div>
+        </section>
+    </section>
+
+</main>
                         <span>STATUS</span>
                         <strong class="status-ready">READY TO PLAY</strong>
                     </div>
@@ -148,6 +208,243 @@
                     <h3>Settings</h3>
                     <p>Make it yours.</p>
                 </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+        </section>
+    </main>
+                        <span>STATUS</span>
+                        <strong class="status-ready">READY TO PLAY</strong>
+                    </div>
+                </div>
+
+                <button class="club-arrow" id="clubDetails" aria-label="Vereinsdetails öffnen">↗</button>
+            </div>
+        </section>
+
+        <section class="quick-section">
+            <div class="quick-card" id="squadCard">
+                <span class="quick-number">01</span>
+                <div>
+                    <span class="quick-kicker">MANAGEMENT</span>
+                    <h3>Squad</h3>
+                    <p>Manage your players.</p>
+                </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+
+            <div class="quick-card" id="transfersCard">
+                <span class="quick-number">02</span>
+                <div>
+                    <span class="quick-kicker">MARKET</span>
+                    <h3>Transfers</h3>
+                    <p>Build your dream team.</p>
+                </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+
+            <div class="quick-card" id="settingsCard">
+                <span class="quick-number">03</span>
+                <div>
+                    <span class="quick-kicker">CUSTOMIZE</span>
+                    <h3>Settings</h3>
+                    <p>Make it yours.</p>
+                </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+        </section>
+    </main>
+                        <span>STATUS</span>
+                        <strong class="status-ready">READY TO PLAY</strong>
+                    </div>
+                </div>
+
+                <button class="club-arrow" id="clubDetails" aria-label="Vereinsdetails öffnen">↗</button>
+            </div>
+        </section>
+
+        <section class="quick-section">
+            <div class="quick-card" id="squadCard">
+                <span class="quick-number">01</span>
+                <div>
+                    <span class="quick-kicker">MANAGEMENT</span>
+                    <h3>Squad</h3>
+                    <p>Manage your players.</p>
+                </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+
+            <div class="quick-card" id="transfersCard">
+                <span class="quick-number">02</span>
+                <div>
+                    <span class="quick-kicker">MARKET</span>
+                    <h3>Transfers</h3>
+                    <p>Build your dream team.</p>
+                </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+
+            <div class="quick-card" id="settingsCard">
+                <span class="quick-number">03</span>
+                <div>
+                    <span class="quick-kicker">CUSTOMIZE</span>
+                    <h3>Settings</h3>
+                    <p>Make it yours.</p>
+                </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+        </section>
+    </main>
+                        <span>STATUS</span>
+                        <strong class="status-ready">READY TO PLAY</strong>
+                    </div>
+                </div>
+
+                <button class="club-arrow" id="clubDetails" aria-label="Vereinsdetails öffnen">↗</button>
+            </div>
+        </section>
+
+        <section class="quick-section">
+            <div class="quick-card" id="squadCard">
+                <span class="quick-number">01</span>
+                <div>
+                    <span class="quick-kicker">MANAGEMENT</span>
+                    <h3>Squad</h3>
+                    <p>Manage your players.</p>
+                </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+
+            <div class="quick-card" id="transfersCard">
+                <span class="quick-number">02</span>
+                <div>
+                    <span class="quick-kicker">MARKET</span>
+                    <h3>Transfers</h3>
+                    <p>Build your dream team.</p>
+                </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+
+            <div class="quick-card" id="settingsCard">
+                <span class="quick-number">03</span>
+                <div>
+                    <span class="quick-kicker">CUSTOMIZE</span>
+                    <h3>Settings</h3>
+                    <p>Make it yours.</p>
+                </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+        </section>
+    </main>
+                        <span>STATUS</span>
+                        <strong class="status-ready">READY TO PLAY</strong>
+                    </div>
+                </div>
+
+                <button class="club-arrow" id="clubDetails" aria-label="Vereinsdetails öffnen">↗</button>
+            </div>
+        </section>
+
+        <section class="quick-section">
+            <div class="quick-card" id="squadCard">
+                <span class="quick-number">01</span>
+                <div>
+                    <span class="quick-kicker">MANAGEMENT</span>
+                    <h3>Squad</h3>
+                    <p>Manage your players.</p>
+                </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+
+            <div class="quick-card" id="transfersCard">
+                <span class="quick-number">02</span>
+                <div>
+                    <span class="quick-kicker">MARKET</span>
+                    <h3>Transfers</h3>
+                    <p>Build your dream team.</p>
+                </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+
+            <div class="quick-card" id="settingsCard">
+                <span class="quick-number">03</span>
+                <div>
+                    <span class="quick-kicker">CUSTOMIZE</span>
+                    <h3>Settings</h3>
+                    <p>Make it yours.</p>
+                </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+        </section>
+    </main>
+                        <span>STATUS</span>
+                        <strong class="status-ready">READY TO PLAY</strong>
+                    </div>
+                </div>
+
+                <button class="club-arrow" id="clubDetails" aria-label="Vereinsdetails öffnen">↗</button>
+            </div>
+        </section>
+
+        <section class="quick-section">
+            <div class="quick-card" id="squadCard">
+                <span class="quick-number">01</span>
+                <div>
+                    <span class="quick-kicker">MANAGEMENT</span>
+                    <h3>Squad</h3>
+                    <p>Manage your players.</p>
+                </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+
+            <div class="quick-card" id="transfersCard">
+                <span class="quick-number">02</span>
+                <div>
+                    <span class="quick-kicker">MARKET</span>
+                    <h3>Transfers</h3>
+                    <p>Build your dream team.</p>
+                </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+
+            <div class="quick-card" id="settingsCard">
+                <span class="quick-number">03</span>
+                <div>
+                    <span class="quick-kicker">CUSTOMIZE</span>
+                    <h3>Settings</h3>
+                    <p>Make it yours.</p>
+                </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+        </section>
+    </main>
+                <span class="quick-arrow">↗</span>
+            </div>
+        </section>
+    </main>
+                <span class="quick-arrow">↗</span>
+            </div>
+        </section>
+    </main>
+                <span class="quick-arrow">↗</span>
+            </div>
+        </section>
+    </main>
+                <span class="quick-arrow">↗</span>
+            </div>
+        </section>
+    </main>
+                <span class="quick-arrow">↗</span>
+            </div>
+        </section>
+    </main>
+                <span class="quick-arrow">↗</span>
+            </div>
+        </section>
+    </main>
+                <span class="quick-arrow">↗</span>
+            </div>
+        </section>
+    </main>
                 <span class="quick-arrow">↗</span>
             </div>
         </section>
