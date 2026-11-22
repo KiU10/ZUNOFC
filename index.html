@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101510">
+    <title>ZUNO FC</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="background-glow"></div>
+    <div class="noise"></div>
+
+    <header class="topbar">
+        <a class="logo" href="#">
+            ZUNO<span>FC</span><i>.</i>
+        </a>
+
+        <nav class="top-nav">
+            <a class="active" href="#">HOME</a>
+            <a href="#" id="clubNav">MY CLUB</a>
+            <a href="#" id="settingsNav">SETTINGS</a>
+        </nav>
+
+        <div class="profile">
+            <div class="profile-avatar">Z</div>
+            <span>MANAGER</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="eyebrow">
+                    <span class="live-dot"></span>
+                    YOUR FOOTBALL WORLD STARTS HERE
+                </div>
+
+                <h1>BUILD YOUR<br><span>LEGACY.</span></h1>
+
+                <p class="hero-description">
+                    Every club has a story.<br>
+                    This one is yours.
+                </p>
+
+                <div class="hero-actions">
+                    <button class="primary-button" id="newCareer">
+                        <span>START CAREER</span>
+                        <span class="button-arrow">↗</span>
+                    </button>
+
+                    <button class="secondary-button" id="continueCareer">
+                        CONTINUE CAREER
+                    </button>
+                </div>
+
+                <div class="hero-footer">
+                    <span>01</span>
+                    <div class="progress-line"><div></div></div>
+                    <span>YOUR JOURNEY BEGINS</span>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="visual-ring ring-one"></div>
+                <div class="visual-ring ring-two"></div>
+                <div class="visual-number">FC</div>
+                <div class="visual-label">
+                    <span>EST. 1899</span>
+                    <span>BARCELONA · SPAIN</span>
+                </div>
+                <div class="visual-caption">MÉS QUE UN CLUB.</div>
+            </div>
+        </section>
+
+        <section class="club-section">
+            <div class="section-heading">
+                <div>
+                    <span class="section-kicker">YOUR CLUB</span>
+                    <h2>THE <span>SPOTLIGHT.</span></h2>
+                </div>
+                <span class="section-index">01 / 03</span>
+            </div>
+
+            <div class="club-card">
+                <div class="club-identity">
+                    <div class="club-crest">
+                        <span>FCB</span>
+                        <small>1899</small>
+                    </div>
+                    <div>
+                        <span class="club-country">SPAIN · LA LIGA</span>
+                        <h3>FC Barcelona</h3>
+                        <p>Barcelona, Catalonia</p>
+                    </div>
+                </div>
+
+                <div class="club-stats">
+                    <div class="stat">
+                        <span>LEAGUE</span>
+                        <strong>LaLiga</strong>
+                    </div>
+                    <div class="stat">
+                        <span>STADIUM</span>
+                        <strong>Spotify Camp Nou</strong>
+                    </div>
+                    <div class="stat">
+                        <span>STATUS</span>
+                        <strong class="status-ready">READY TO PLAY</strong>
+                    </div>
+                </div>
+
+                <button class="club-arrow" id="clubDetails" aria-label="Vereinsdetails öffnen">↗</button>
+            </div>
+        </section>
+
+        <section class="quick-section">
+            <div class="quick-card" id="squadCard">
+                <span class="quick-number">01</span>
+                <div>
+                    <span class="quick-kicker">MANAGEMENT</span>
+                    <h3>Squad</h3>
+                    <p>Manage your players.</p>
+                </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+
+            <div class="quick-card" id="transfersCard">
+                <span class="quick-number">02</span>
+                <div>
+                    <span class="quick-kicker">MARKET</span>
+                    <h3>Transfers</h3>
+                    <p>Build your dream team.</p>
+                </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+
+            <div class="quick-card" id="settingsCard">
+                <span class="quick-number">03</span>
+                <div>
+                    <span class="quick-kicker">CUSTOMIZE</span>
+                    <h3>Settings</h3>
+                    <p>Make it yours.</p>
+                </div>
+                <span class="quick-arrow">↗</span>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>© 2026 ZUNO STUDIOS</span>
+        <span>MADE FOR THE LOVE OF FOOTBALL <i>●</i></span>
+        <span>PROTOTYPE 0.1</span>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
