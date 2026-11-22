@@ -3,7 +3,8 @@
     --bg: #101510;
     --panel: #171e18;
     --panel-light: #202a21;
-    --lime: #c7ff4a;
+    --lime: #7865D8;
+    --purple-light: #9A8BE8;
     --white: #f4f6ef;
     --muted: #899287;
     --border: rgba(255,255,255,0.09);
@@ -44,7 +45,7 @@ a {
     height: 650px;
     top: -300px;
     right: -150px;
-    background: radial-gradient(circle, rgba(199,255,74,0.09), transparent 70%);
+    background: radial-gradient(circle, rgba(120,101,216,0.09), transparent 70%);
     pointer-events: none;
     z-index: -1;
 }
@@ -399,24 +400,11 @@ main {
 }
 
 .club-crest {
-    width: 61px;
+    width: 68px;
     height: 68px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    clip-path: polygon(0 0, 100% 0, 92% 78%, 50% 100%, 8% 78%);
-    background: linear-gradient(135deg, #a51f39 0 48%, #142c58 48% 100%);
-    border: 2px solid #e3c65b;
-    color: white;
-    font-weight: 900;
-    font-size: 14px;
-}
-
-.club-crest small {
-    font-size: 8px;
-    color: #f3d875;
+    object-fit: contain;
+    flex-shrink: 0;
+    filter: drop-shadow(0 4px 12px rgba(120,101,216,0.2));
 }
 
 .club-country {
