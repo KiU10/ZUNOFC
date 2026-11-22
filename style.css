@@ -701,3 +701,153 @@ footer i {
         transition-duration: .01ms !important;
     }
 }
+
+/* CAREER CREATION */
+
+.career-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    background: rgba(8, 8, 14, 0.88);
+    backdrop-filter: blur(14px);
+    opacity: 0;
+    visibility: hidden;
+    transition: .25s ease;
+    overflow-y: auto;
+}
+
+.career-screen.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.career-panel {
+    width: 100%;
+    max-width: 580px;
+    padding: 38px;
+    background: #171522;
+    border: 1px solid rgba(120,101,216,.3);
+    border-radius: 12px;
+    box-shadow: 0 20px 100px rgba(0,0,0,.5);
+    transform: translateY(15px);
+    transition: .25s ease;
+}
+
+.career-screen.visible .career-panel {
+    transform: translateY(0);
+}
+
+.career-back {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.career-back:hover {
+    color: var(--lime);
+}
+
+.career-heading {
+    margin: 35px 0;
+}
+
+.career-heading h2 {
+    margin-top: 12px;
+    font-size: clamp(28px, 6vw, 42px);
+    letter-spacing: -2px;
+}
+
+.career-heading h2 span {
+    color: var(--lime);
+}
+
+.career-heading p {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+#careerForm {
+    display: grid;
+    gap: 20px;
+}
+
+.career-field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.career-field label,
+.career-season span {
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+}
+
+.career-field input,
+.career-field select {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    background: #101019;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 5px;
+    color: var(--white);
+    font-family: inherit;
+    font-size: 12px;
+    outline: none;
+}
+
+.career-field input:focus,
+.career-field select:focus {
+    border-color: var(--lime);
+    box-shadow: 0 0 0 3px rgba(120,101,216,.12);
+}
+
+.career-field select option {
+    background: #171522;
+    color: white;
+}
+
+.career-season {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px;
+    background: rgba(120,101,216,.09);
+    border: 1px solid rgba(120,101,216,.2);
+    border-radius: 5px;
+}
+
+.career-season strong {
+    color: var(--lime);
+    font-size: 12px;
+}
+
+.career-submit {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+@media (max-width: 600px) {
+    .career-panel {
+        padding: 25px 20px;
+    }
+
+    .career-heading {
+        margin: 28px 0;
+    }
+}
+
