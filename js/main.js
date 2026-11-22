@@ -1,4 +1,3 @@
-
 const toast = document.getElementById("toast");
 
 const newCareerButton = document.getElementById("newCareer");
@@ -41,7 +40,60 @@ const clubs = [
     "Paris Saint-Germain"
 ];
 
-// CAREER CREATION SCREEN
+// PAGE NAVIGATION
+
+function showPage(pageId) {
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active-page");
+    });
+
+    document.getElementById(pageId).classList.add("active-page");
+
+    document.querySelectorAll(".top-nav a").forEach(link => {
+        link.classList.remove("active");
+    });
+
+    const navLinks = {
+        homePage: "homeNav",
+        dashboardPage: "homeNav",
+        clubPage: "clubNav"
+    };
+
+    const activeLink = document.getElementById(navLinks[pageId]);
+
+    if (activeLink) {
+        activeLink.classList.add("active");
+    }
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+// DASHBOARD
+
+function openDashboard() {
+    const career = getCareer();
+
+    if (!career) {
+        showToast("NO CAREER FOUND. START A NEW ONE!");
+        return;
+    }
+
+    document.getElementById("dashboardManager").textContent =
+        career.manager.toUpperCase();
+
+    document.getElementById("dashboardClub").textContent =
+        career.club;
+
+    document.getElementById("dashboardDifficulty").textContent =
+        `${career.difficulty} difficulty · ${career.season}`;
+
+    document.getElementById("clubName").textContent =
+        career.club;
+
+    showPage("dashboardPage");
+}
+
+// CAREER CREATION
 
 function openCareerCreation() {
     let screen = document.getElementById("careerScreen");
@@ -127,7 +179,7 @@ function openCareerCreation() {
             screen.classList.remove("visible");
         });
 
-        document.getElementById("careerForm").addEventListener("submit", (event) => {
+        document.getElementById("careerForm").addEventListener("submit", event => {
             event.preventDefault();
 
             const existingCareer = getCareer();
@@ -158,67 +210,60 @@ function openCareerCreation() {
 
             screen.classList.remove("visible");
 
+            openDashboard();
             showToast(`CAREER CREATED · ${career.club.toUpperCase()} ⚽`);
-
-            continueCareerButton.style.opacity = "1";
         });
     }
 
     screen.classList.add("visible");
 }
 
-// CONTINUE CAREER
-
-function continueCareer() {
-    const career = getCareer();
-
-    if (!career) {
-        showToast("NO CAREER FOUND. START A NEW ONE!");
-        return;
-    }
-
-    showToast(`WELCOME BACK, ${career.manager.toUpperCase()}!`);
-}
-
 // BUTTONS
 
 newCareerButton.addEventListener("click", openCareerCreation);
-continueCareerButton.addEventListener("click", continueCareer);
+continueCareerButton.addEventListener("click", openDashboard);
 
-// CLUB DETAILS
+// NAVIGATION
 
-document.getElementById("clubDetails").addEventListener("click", () => {
-    showToast("FC BARCELONA · CLUB PROFILE COMING SOON");
-});
-
-document.getElementById("clubNav").addEventListener("click", (event) => {
+document.getElementById("homeNav").addEventListener("click", event => {
     event.preventDefault();
 
-    document.querySelector(".club-section").scrollIntoView({
-        behavior: "smooth"
-    });
+    if (getCareer()) {
+        openDashboard();
+    } else {
+        showPage("homePage");
+    }
 });
 
-// QUICK MENU
+document.getElementById("clubNav").addEventListener("click", event => {
+    event.preventDefault();
+    showPage("clubPage");
+});
 
-document.getElementById("squadCard").addEventListener("click", () => {
+document.getElementById("settingsNav").addEventListener("click", event => {
+    event.preventDefault();
+    showToast("SETTINGS · COMING SOON");
+});
+
+// DASHBOARD BUTTONS
+
+document.getElementById("dashboardClubButton").addEventListener("click", () => {
+    showPage("clubPage");
+});
+
+document.getElementById("dashboardSquad").addEventListener("click", () => {
     showToast("SQUAD MANAGEMENT · COMING SOON");
 });
 
-document.getElementById("transfersCard").addEventListener("click", () => {
+document.getElementById("dashboardTransfers").addEventListener("click", () => {
     showToast("TRANSFER MARKET · COMING SOON");
 });
 
-function openSettings() {
-    showToast("SETTINGS · COMING SOON");
-}
+// CLUB
 
-document.getElementById("settingsNav").addEventListener("click", (event) => {
-    event.preventDefault();
-    openSettings();
+document.getElementById("clubDetails").addEventListener("click", () => {
+    showToast("CLUB DETAILS · COMING SOON");
 });
-
-document.getElementById("settingsCard").addEventListener("click", openSettings);
 
 // INITIALIZATION
 
@@ -227,8 +272,14 @@ function initialize() {
 
     continueCareerButton.style.opacity = career ? "1" : "0.65";
 
+    if (career) {
+        openDashboard();
+    } else {
+        showPage("homePage");
+    }
+
     console.log("ZUNO FC initialized.");
-    console.log("Prototype version: 0.2");
+    console.log("Prototype version: 0.3");
 }
 
 initialize();
